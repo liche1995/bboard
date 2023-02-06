@@ -1,5 +1,11 @@
-var access_time = new Date();
-var hours = access_time.getHours();
+if(typeof mock_time == 'defined')
+{
+    var access_time = mock_time.getHours();
+}
+else{
+    var access_time = new Date();
+    var hours = access_time.getHours();
+}
 
 
 if(hours >= 6 && hours < 11)
@@ -18,3 +24,4 @@ else
 {
     document.getElementById("title").innerHTML = "睡不著嗎?";
 }
+document.getElementById("now_time").innerHTML = hours;
