@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Board;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/', App\Http\Controllers\IndexController::class);
+
+Route::get("/board", function(){
+    return Board::all();
+});

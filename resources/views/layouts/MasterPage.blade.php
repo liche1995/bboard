@@ -7,20 +7,21 @@
         <!-- Bootstrap CSS -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <title>Hello, world!</title>
+
+        @yield("script")
+        <script>
+            @yield("addition_script")
+        </script>
+
+        <style>
+            @yield("addition_style")
+            html,body{
+                background-color: #fff;
+            };
+        </style>
+
     </head>
 
-    @yield("script")
-    <script>
-        @yield("addition_script")
-    </script>
-
-    <style>
-        @yield("addition_style")
-        html,body{
-            background-color: #fff;
-        };
-    </style>
-    
     <body>
         <nav></nav>
         <div name="content">
