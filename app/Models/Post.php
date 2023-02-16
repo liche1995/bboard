@@ -9,27 +9,28 @@ use Illuminate\Database\Eloquent\Relations\belongTo;
 use Illuminate\Database\Eloquent\Relations\belongToMany;
 use Illuminate\Database\Eloquent\Relations\hasMany;
 
+use App\Models\Board;
 use App\Models\User;
-use App\Models\Tag;
+use App\Models\Comment;
 
-class Board extends Model
+class Post extends Model
 {
     use HasFactory;
-    protected $table = "Boards";
+    protected $table = "Posts";
 
-    protected $fillable = ["name", "comment", "classify_id", "moderators", "vicmod"];
+    protected $fillable = ["board_id", "author_id", "title", "content", "commentable"];
     protected $hidden = [];
     protected $casts = [];
 
-    public function moderators(){
-        return $this->belongTo(User::class);
+    public function board(){
+        return $this->belongTo(Board:class);
     }
 
-    public function vicmod(){
+    public function author(){
         return $this->belongTo(User::class);
     }
-
-    public function Tag(){
-        $this->hasMany(Tag:class);
+    
+    public function comments(){
+        return $this->hasMany(Comment:class);
     }
 }

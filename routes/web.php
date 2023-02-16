@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Board;
+use App\Models\Classify;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/', App\Http\Controllers\IndexController::class);
 
-Route::get("/board", function(){
+Route::get("/bt", function(){
     return Board::all();
+});
+
+Route::get("/ct", function(){
+    return Classify::all();
 });

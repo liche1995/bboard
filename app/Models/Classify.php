@@ -9,27 +9,18 @@ use Illuminate\Database\Eloquent\Relations\belongTo;
 use Illuminate\Database\Eloquent\Relations\belongToMany;
 use Illuminate\Database\Eloquent\Relations\hasMany;
 
-use App\Models\User;
-use App\Models\Tag;
+use App\Models\Board;
 
-class Board extends Model
+class Classify extends Model
 {
     use HasFactory;
-    protected $table = "Boards";
+    protected $table = "Classify";
 
-    protected $fillable = ["name", "comment", "classify_id", "moderators", "vicmod"];
+    protected $fillable = ["name", ];
     protected $hidden = [];
     protected $casts = [];
 
-    public function moderators(){
-        return $this->belongTo(User::class);
-    }
-
-    public function vicmod(){
-        return $this->belongTo(User::class);
-    }
-
-    public function Tag(){
-        $this->hasMany(Tag:class);
+    public function boards(){
+        return $this->hasMany(Board::class, "classify_id");
     }
 }
